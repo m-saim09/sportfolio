@@ -574,18 +574,8 @@
 
   <form
     id="contactForm"
-    name="contact"
-    method="POST"
-    data-netlify="true"
-    data-netlify-honeypot="bot-field"
     class="max-w-3xl mx-auto bg-gray-800/60 backdrop-blur-xl p-8 rounded-2xl shadow-2xl space-y-6"
   >
-    <input type="hidden" name="form-name" value="contact">
-
-    <!-- Honeypot -->
-    <p class="hidden">
-      <label>Don’t fill this out: <input name="bot-field"></label>
-    </p>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
       <input type="text" name="name" placeholder="Your Name" required
@@ -630,7 +620,9 @@
   const sendIcon = document.getElementById("sendIcon");
   const toast = document.getElementById("toast");
 
-  form.addEventListener("submit", () => {
+  form.addEventListener("submit", (e) => {
+    e.preventDefault(); // Prevent default form submission
+    
     // Spinner
     sendIcon.className = "fas fa-spinner fa-spin";
 

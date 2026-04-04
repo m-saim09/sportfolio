@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Muhammad Saim | Resume</title>
+  <meta name="description" content="Resume page for Muhammad Saim, MERN Stack Developer.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #eff4fb;
+      --surface: #ffffff;
+      --text: #0f172a;
+      --muted: #475569;
+      --line: #d8e1ee;
+      --brand: #0f766e;
+      --brand-secondary: #2563eb;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Manrope", sans-serif;
+      background: linear-gradient(180deg, #eff4fb 0%, #f8fbff 100%);
+      color: var(--text);
+      padding: 2rem 1rem 4rem;
+    }
+
+    .resume {
+      width: min(960px, 100%);
+      margin: 0 auto;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      box-shadow: 0 24px 60px rgba(148, 163, 184, 0.2);
+      overflow: hidden;
+    }
+
+    .hero {
+      padding: 2rem;
+      background: linear-gradient(135deg, rgba(15, 118, 110, 0.08), rgba(37, 99, 235, 0.08));
+      border-bottom: 1px solid var(--line);
+    }
+
+    h1, h2 {
+      font-family: "Space Grotesk", sans-serif;
+      letter-spacing: -0.04em;
+      margin: 0;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom: 0.5rem;
+    }
+
+    .subtitle {
+      color: var(--brand-secondary);
+      font-weight: 700;
+      margin: 0 0 1rem;
+    }
+
+    .summary {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.8;
+      max-width: 52rem;
+    }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 1.25rem;
+    }
+
+    .meta span {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 0.7rem 0.9rem;
+      font-size: 0.95rem;
+      color: var(--muted);
+      background: #fff;
+    }
+
+    .content {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+    }
+
+    .sidebar,
+    .main {
+      padding: 2rem;
+    }
+
+    .sidebar {
+      background: #fbfdff;
+      border-right: 1px solid var(--line);
+    }
+
+    .section + .section {
+      margin-top: 2rem;
+    }
+
+    h2 {
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+    }
+
+    p, li {
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 1.1rem;
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      padding: 0;
+      list-style: none;
+    }
+
+    .tag-list li {
+      padding: 0.55rem 0.8rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: #fff;
+      font-size: 0.94rem;
+    }
+
+    .project {
+      padding: 1rem 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .project:first-of-type {
+      padding-top: 0;
+      border-top: 0;
+    }
+
+    .project h3 {
+      margin: 0 0 0.35rem;
+      font-size: 1.05rem;
+    }
+
+    .project p {
+      margin: 0 0 0.6rem;
+    }
+
+    .footer-note {
+      padding: 1.25rem 2rem 2rem;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    @media print {
+      body {
+        background: #fff;
+        padding: 0;
+      }
+
+      .resume {
+        width: 100%;
+        border: 0;
+        border-radius: 0;
+        box-shadow: none;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .content {
+        grid-template-columns: 1fr;
+      }
+
+      .sidebar {
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+    }
+  </style>
+</head>
+<body>
+  <article class="resume">
+    <header class="hero">
+      <h1>Muhammad Saim</h1>
+      <p class="subtitle">MERN Stack Developer</p>
+      <p class="summary">
+        Full stack developer focused on building modern, scalable, and user-friendly web applications with React, Node.js, Express, MongoDB, and a strong eye for interface quality, responsiveness, and maintainable implementation.
+      </p>
+      <div class="meta">
+        <span>Portfolio: Live on Vercel</span>
+        <span>GitHub: github.com/m-saim09</span>
+        <span>LinkedIn: muhammad-saim-07992337b</span>
+        <span>WhatsApp: +92 319 667125</span>
+      </div>
+    </header>
+
+    <div class="content">
+      <aside class="sidebar">
+        <section class="section">
+          <h2>Core Skills</h2>
+          <ul class="tag-list">
+            <li>React.js</li>
+            <li>JavaScript</li>
+            <li>Tailwind CSS</li>
+            <li>Node.js</li>
+            <li>Express.js</li>
+            <li>MongoDB</li>
+            <li>REST APIs</li>
+            <li>GitHub</li>
+          </ul>
+        </section>
+
+        <section class="section">
+          <h2>Strengths</h2>
+          <ul>
+            <li>Responsive frontend implementation</li>
+            <li>Clean UI and UX-focused execution</li>
+            <li>Full stack MERN project development</li>
+            <li>Continuous learning and rapid improvement</li>
+          </ul>
+        </section>
+
+        <section class="section">
+          <h2>Services</h2>
+          <ul>
+            <li>Full Stack Development</li>
+            <li>Frontend Development</li>
+            <li>API Development</li>
+          </ul>
+        </section>
+      </aside>
+
+      <main class="main">
+        <section class="section">
+          <h2>Professional Summary</h2>
+          <p>
+            I build projects that balance polished interfaces with practical backend logic. My work focuses on creating modern web products that look professional, work well across devices, and follow stronger engineering habits as complexity grows.
+          </p>
+        </section>
+
+        <section class="section">
+          <h2>Selected Projects</h2>
+
+          <div class="project">
+            <h3>FastBite</h3>
+            <p>Food delivery application concept with a modern storefront experience, admin-ready patterns, and full stack MERN foundations.</p>
+            <p>Stack: React, Node.js, Express, MongoDB</p>
+          </div>
+
+          <div class="project">
+            <h3>Job Finder Hub</h3>
+            <p>Recruitment-oriented platform with structured listings, user journeys for job seekers, and clear UI for career-focused workflows.</p>
+            <p>Stack: React, Tailwind CSS, Node.js, MongoDB</p>
+          </div>
+
+          <div class="project">
+            <h3>Project Tracker</h3>
+            <p>Task and workflow tracking interface focused on CRUD flows, practical team use cases, and dashboard-style organization.</p>
+            <p>Stack: React, Redux, Express, MongoDB</p>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2>Development Focus</h2>
+          <ul>
+            <li>Writing maintainable code that supports future scaling and iteration</li>
+            <li>Improving accessibility, performance, and UI consistency</li>
+            <li>Building production-ready habits through hands-on project work</li>
+          </ul>
+        </section>
+      </main>
+    </div>
+
+    <div class="footer-note">
+      This resume page is designed to be printable or easily exported as PDF for job applications.
+    </div>
+  </article>
+</body>
+</html>

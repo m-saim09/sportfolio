@@ -33,9 +33,21 @@ const transporter = process.env.SMTP_HOST && process.env.SMTP_USER && process.en
   : null;
 
 const sanitize = (value = "") => String(value).trim();
+const whatsappUrl = "https://wa.me/92319667125";
 
 const getMockResponse = (question) => {
   const q = question.toLowerCase();
+
+  if (
+    q.includes("free") ||
+    q.includes("available") ||
+    q.includes("availability") ||
+    q.includes("are you available") ||
+    q.includes("are you free") ||
+    q.includes("can you work")
+  ) {
+    return `Yes, Muhammad Saim is available for freelance and project-based work. If you want to discuss a project, please use the contact form on this portfolio or message directly on WhatsApp: ${whatsappUrl}`;
+  }
 
   if (q.includes("skill") || q.includes("tech")) {
     return "Muhammad Saim works mainly with the MERN stack: React, Node.js, Express, MongoDB, JavaScript, Tailwind CSS, and modern responsive UI work.";
@@ -46,14 +58,14 @@ const getMockResponse = (question) => {
   }
 
   if (q.includes("contact") || q.includes("hire") || q.includes("email")) {
-    return "You can reach Muhammad Saim through the contact form, WhatsApp, or LinkedIn. The contact form sends a direct notification email to msaimryk1@gmail.com.";
+    return `For work or hiring, please fill out the contact form on this portfolio. You can also reach out directly on WhatsApp here: ${whatsappUrl}`;
   }
 
   if (q.includes("service")) {
     return "Services include Full Stack Development, Frontend Development, and API Development, with a focus on clean UI and production-minded implementation.";
   }
 
-  return "I can help with questions about Muhammad Saim's skills, projects, services, availability, and how to get in touch.";
+  return `I can help with questions about Muhammad Saim's skills, projects, services, availability, and contact options. If you want to work together, please fill out the contact form or message on WhatsApp: ${whatsappUrl}`;
 };
 
 app.post("/api/chat", async (req, res) => {
@@ -74,7 +86,7 @@ app.post("/api/chat", async (req, res) => {
       messages: [
         {
           role: "system",
-          content: "You are a concise portfolio assistant for Muhammad Saim, a MERN Stack Developer. Answer only about his portfolio, skills, services, projects, availability, and contact options."
+          content: "You are a concise and helpful portfolio assistant for Muhammad Saim, a MERN Stack Developer. Answer only about his portfolio, skills, services, projects, availability, and contact options. If someone asks whether he is free, available, or open for work, say yes, he is available for freelance and project-based work. Then guide them to fill out the contact form and also mention direct WhatsApp contact at https://wa.me/92319667125. Keep answers short, natural, and useful."
         },
         {
           role: "user",

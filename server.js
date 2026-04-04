@@ -18,9 +18,12 @@ app.use(express.static(__dirname));
 
 app.post("/api/chat", chatHandler);
 app.post("/api/contact", contactHandler);
+app.get(["/", "/index.html"], (_req, res) => {
+  res.sendFile(path.join(__dirname, "index.html"));
+});
 
 app.get("*", (_req, res) => {
-  res.sendFile(path.join(__dirname, "index.html"));
+  res.status(404).sendFile(path.join(__dirname, "404.html"));
 });
 
 app.listen(port, () => {

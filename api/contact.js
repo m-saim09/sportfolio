@@ -22,19 +22,21 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: "A valid email address is required." });
   }
 
-  if (!process.env.SMTP_HOST || !process.env.SMTP_USER || !process.env.SMTP_PASS) {
-    return res.status(500).json({
-      error: "Email service is not configured yet. Please add SMTP credentials in Vercel environment variables."
-    });
-  }
+  const submission = { name, email, subject, message };
 
   try {
-    const submission = { name, email, subject, message };
-
     try {
       await saveContactSubmission(submission);
     } catch (storageError) {
       console.error("Contact submission storage failed:", storageError);
+    }
+
+    if (!process.env.SMTP_HOST || !process.env.SMTP_USER || !process.env.SMTP_PASS) {
+      return res.status(200).json({
+        success: true,
+        emailed: false,
+        message: "Submission saved locally. Add SMTP credentials to enable email delivery."
+      });
     }
 
     const transporter = nodemailer.createTransport({
@@ -71,7 +73,7 @@ ${message}
       `
     });
 
-    return res.status(200).json({ success: true });
+    return res.status(200).json({ success: true, emailed: true });
   } catch (error) {
     console.error("Contact API error:", error);
     return res.status(500).json({ error: "Unable to send email right now." });

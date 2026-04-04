@@ -2301,6 +2301,7 @@
     });
 
     const chatStorageKey = "saim-portfolio-chat-history";
+    const chatSessionKey = "saim-portfolio-chat-session-id";
     const defaultChatHistory = [
       {
         role: "bot",
@@ -2316,6 +2317,17 @@
         return defaultChatHistory;
       }
     };
+
+    const getChatSessionId = () => {
+      const existing = localStorage.getItem(chatSessionKey);
+      if (existing) return existing;
+
+      const created = `session-${Date.now()}-${Math.random().toString(36).slice(2, 10)}`;
+      localStorage.setItem(chatSessionKey, created);
+      return created;
+    };
+
+    const chatSessionId = getChatSessionId();
 
     let chatHistory = getStoredChatHistory();
 
@@ -2389,7 +2401,7 @@
         const response = await fetch("/api/chat", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ question })
+          body: JSON.stringify({ question, sessionId: chatSessionId })
         });
 
         const data = await response.json();

@@ -1,4 +1,5 @@
 import nodemailer from "nodemailer";
+import { saveContactSubmission } from "../lib/storage.js";
 
 const sanitize = (value = "") => String(value).trim();
 
@@ -28,6 +29,14 @@ export default async function handler(req, res) {
   }
 
   try {
+    const submission = { name, email, subject, message };
+
+    try {
+      await saveContactSubmission(submission);
+    } catch (storageError) {
+      console.error("Contact submission storage failed:", storageError);
+    }
+
     const transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST,
       port: Number(process.env.SMTP_PORT || 587),

@@ -1,4 +1,5 @@
 import OpenAI from "openai";
+import { saveChatExchange } from "../lib/storage.js";
 
 const sanitize = (value = "") => String(value).trim();
 
@@ -30,12 +31,21 @@ export default async function handler(req, res) {
   }
 
   const question = sanitize(req.body?.question);
+  const sessionId = sanitize(req.body?.sessionId);
   if (!question) {
     return res.status(400).json({ error: "Question is required." });
   }
 
   if (!process.env.OPENAI_API_KEY) {
-    return res.status(200).json({ answer: getMockResponse(question) });
+    const answer = getMockResponse(question);
+
+    try {
+      await saveChatExchange({ sessionId, question, answer });
+    } catch (storageError) {
+      console.error("Chat storage failed:", storageError);
+    }
+
+    return res.status(200).json({ answer });
   }
 
   try {
@@ -53,9 +63,24 @@ export default async function handler(req, res) {
     });
 
     const answer = completion.choices?.[0]?.message?.content?.trim() || getMockResponse(question);
+
+    try {
+      await saveChatExchange({ sessionId, question, answer });
+    } catch (storageError) {
+      console.error("Chat storage failed:", storageError);
+    }
+
     return res.status(200).json({ answer });
   } catch (error) {
     console.error("Chat API error:", error);
-    return res.status(200).json({ answer: getMockResponse(question) });
+    const answer = getMockResponse(question);
+
+    try {
+      await saveChatExchange({ sessionId, question, answer });
+    } catch (storageError) {
+      console.error("Chat storage failed:", storageError);
+    }
+
+    return res.status(200).json({ answer });
   }
 }

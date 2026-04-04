@@ -5,22 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>404 | Page Not Found</title>
   <meta name="robots" content="noindex, follow">
-  <meta name="theme-color" content="#f7f9fc">
+  <meta name="theme-color" content="#f8fafc">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
   <style>
     :root {
       color-scheme: light;
-      --bg: #f7f9fc;
-      --bg-accent: #eef4fb;
-      --surface: rgba(255, 255, 255, 0.94);
-      --text: #142033;
-      --muted: #5f6f84;
-      --line: rgba(15, 23, 42, 0.1);
-      --brand: #0f172a;
-      --brand-soft: #e9eef7;
-      --shadow: 0 24px 60px rgba(15, 23, 42, 0.08);
+      --bg: #f8fafc;
+      --bg-soft: #eef4ff;
+      --text: #0f172a;
+      --muted: #5b677a;
+      --line: rgba(15, 23, 42, 0.08);
+      --button: #2458ff;
+      --button-hover: #1747e6;
+      --shadow: 0 24px 60px rgba(37, 99, 235, 0.14);
     }
 
     * {
@@ -33,67 +32,68 @@
       font-family: "Manrope", sans-serif;
       color: var(--text);
       background:
-        radial-gradient(circle at top left, rgba(90, 167, 255, 0.08), transparent 26%),
-        linear-gradient(180deg, var(--bg), var(--bg-accent));
+        radial-gradient(circle at top, rgba(59, 130, 246, 0.1), transparent 28%),
+        linear-gradient(180deg, #ffffff, var(--bg));
       display: grid;
       place-items: center;
-      padding: 1.5rem;
+      padding: 2rem 1.25rem;
     }
 
     .shell {
-      width: min(920px, 100%);
+      width: min(780px, 100%);
+      text-align: center;
     }
 
-    .card {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: 28px;
-      box-shadow: var(--shadow);
-      padding: clamp(1.8rem, 4vw, 3.5rem);
+    .oops {
+      margin: 0;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: clamp(4.6rem, 14vw, 10rem);
+      line-height: 0.88;
+      letter-spacing: -0.08em;
+      font-weight: 700;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.7), transparent 22%),
+        linear-gradient(135deg, #1d4ed8, #4f46e5 45%, #7c3aed 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 10px 30px rgba(79, 70, 229, 0.08);
     }
 
-    .eyebrow {
-      display: inline-block;
-      padding: 0.45rem 0.85rem;
+    .face {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 4rem;
+      height: 4rem;
+      margin: 0 auto 1.1rem;
       border-radius: 999px;
-      background: var(--brand-soft);
-      color: var(--muted);
-      font-size: 0.82rem;
+      background: var(--bg-soft);
+      color: #3658d4;
+      font-size: 1.6rem;
+      font-weight: 800;
+      box-shadow: inset 0 0 0 1px rgba(36, 88, 255, 0.08);
+    }
+
+    .meta {
+      margin-top: 1rem;
+      font-size: 1.45rem;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+    }
+
+    .submeta {
+      margin-top: 0.45rem;
+      font-size: 0.94rem;
       font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
+      color: #334155;
     }
 
-    .layout {
-      display: grid;
-      grid-template-columns: minmax(0, 1.2fr) minmax(180px, 0.8fr);
-      gap: 2rem;
-      align-items: center;
-      margin-top: 1.25rem;
-    }
-
-    h1 {
-      margin: 0;
-      font-family: "Space Grotesk", sans-serif;
-      font-size: clamp(2.7rem, 8vw, 5rem);
-      line-height: 0.95;
-      letter-spacing: -0.05em;
-    }
-
-    .title {
-      display: grid;
-      gap: 0.75rem;
-    }
-
-    .subtitle {
-      font-size: clamp(1.05rem, 2vw, 1.2rem);
-      font-weight: 700;
-      color: var(--text);
-    }
-
-    p {
-      margin: 0;
+    .copy {
       max-width: 34rem;
+      margin: 1rem auto 0;
       color: var(--muted);
       line-height: 1.8;
       font-size: 1rem;
@@ -101,22 +101,23 @@
 
     .actions {
       display: flex;
-      flex-wrap: wrap;
+      justify-content: center;
       gap: 0.9rem;
-      margin-top: 1.6rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
     }
 
     .button {
+      min-width: 190px;
+      min-height: 3.35rem;
+      padding: 0 1.4rem;
+      border-radius: 999px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 3.1rem;
-      padding: 0 1.2rem;
-      border-radius: 999px;
-      border: 1px solid var(--line);
       text-decoration: none;
-      font-weight: 700;
-      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+      font-weight: 800;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
     }
 
     .button:hover,
@@ -125,100 +126,60 @@
     }
 
     .button-primary {
-      background: var(--brand);
+      background: linear-gradient(135deg, var(--button), #3b82f6);
       color: #ffffff;
-      box-shadow: 0 14px 30px rgba(15, 23, 42, 0.14);
+      box-shadow: var(--shadow);
+    }
+
+    .button-primary:hover,
+    .button-primary:focus-visible {
+      background: linear-gradient(135deg, var(--button-hover), #2563eb);
     }
 
     .button-secondary {
       background: #ffffff;
       color: var(--text);
+      box-shadow: inset 0 0 0 1px var(--line);
     }
 
-    .visual {
-      display: grid;
-      place-items: center;
-    }
-
-    .badge {
-      width: min(100%, 220px);
-      aspect-ratio: 1 / 1;
-      border-radius: 28px;
-      border: 1px solid var(--line);
-      background: linear-gradient(180deg, #ffffff, #f3f6fb);
-      display: grid;
-      place-items: center;
-    }
-
-    .badge span {
-      font-family: "Space Grotesk", sans-serif;
-      font-size: clamp(3rem, 8vw, 4.5rem);
-      font-weight: 700;
-      letter-spacing: -0.08em;
-      color: #243247;
-    }
-
-    .quick-links {
+    .links {
       display: flex;
-      flex-wrap: wrap;
+      justify-content: center;
       gap: 1rem;
-      margin-top: 1.2rem;
+      flex-wrap: wrap;
+      margin-top: 1.3rem;
     }
 
-    .quick-links a {
-      color: var(--muted);
+    .links a {
+      color: #516074;
       text-decoration: none;
-      font-weight: 600;
+      font-weight: 700;
     }
 
-    .quick-links a:hover,
-    .quick-links a:focus-visible {
+    .links a:hover,
+    .links a:focus-visible {
       color: var(--text);
-    }
-
-    @media (max-width: 760px) {
-      .layout {
-        grid-template-columns: 1fr;
-      }
-
-      .visual {
-        order: -1;
-      }
     }
   </style>
 </head>
 <body>
   <main class="shell">
-    <section class="card">
-      <span class="eyebrow">Page Not Found</span>
+    <div class="face" aria-hidden="true">:(</div>
+    <h1 class="oops">Oops!</h1>
+    <div class="meta">404 - Page Not Found</div>
+    <div class="submeta">The page you requested could not be found</div>
+    <p class="copy">The link may be broken, the page may have moved, or the URL might be incorrect. You can head back to the homepage or continue exploring featured work from the portfolio.</p>
 
-      <div class="layout">
-        <div>
-          <div class="title">
-            <h1>404</h1>
-            <div class="subtitle">This page is not available.</div>
-            <p>The link may be outdated, or the page may have been moved. You can return to the portfolio homepage or jump directly to the projects section.</p>
-          </div>
+    <div class="actions">
+      <a class="button button-primary" href="/index.html">Go To Homepage</a>
+      <a class="button button-secondary" href="/index.html#projects">View Projects</a>
+    </div>
 
-          <div class="actions">
-            <a class="button button-primary" href="/index.html">Back Home</a>
-            <a class="button button-secondary" href="/index.html#projects">View Projects</a>
-          </div>
-
-          <div class="quick-links">
-            <a href="/index.html#about">About</a>
-            <a href="/index.html#skills">Skills</a>
-            <a href="/index.html#contact">Contact</a>
-          </div>
-        </div>
-
-        <div class="visual" aria-hidden="true">
-          <div class="badge">
-            <span>404</span>
-          </div>
-        </div>
-      </div>
-    </section>
+    <div class="links">
+      <a href="/index.html#about">About</a>
+      <a href="/index.html#skills">Skills</a>
+      <a href="/index.html#contact">Contact</a>
+    </div>
   </main>
 </body>
 </html>
